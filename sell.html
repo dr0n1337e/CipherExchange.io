@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CipherExchange — Sell</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="theme-color" content="#0b0f14">
+<meta property="og:image" content="assets/og.png"><meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="sell">
+<header class="nav">
+  <div class="container nav__inner">
+    <div class="brand">
+      <div class="logo">CX</div>
+      <a class="brand__text" href="index.html">CipherExchange</a>
+    </div>
+    <nav class="nav__links">
+      <a href="shop.html">SHOP</a>
+      <a href="sell.html">SELL</a>
+      <a href="index.html#hot">HOT ITEMS</a>
+      <a href="auctions.html">AUCTIONS</a>
+      <a class="btn btn--ghost btn--sm" href="#" onclick="auth.open()">Log in / Sign up</a>
+      <a class="btn btn--ghost btn--sm" href="javascript:void(0)">Wallet: <span id="walletBal">$0.00</span></a>
+      <button class="btn btn--primary btn--sm" onclick="ui.openDeposit()">Deposit</button>
+    </nav>
+  </div>
+  <div class="ticker" id="ticker"></div>
+</header>
+<main class="container">
+  <section class="section">
+    <div class="section__head"><h2>Seller Portal</h2><small class="muted">List a new item (requires login)</small></div>
+    <div class="card">
+      <div class="grid grid--2">
+        <div>
+          <label class="small muted">Title</label>
+          <input id="s_title" class="input" placeholder="Chrome Hearts Blue Patch Denim">
+          <label class="small muted">Brand</label>
+          <input id="s_brand" class="input" placeholder="Chrome Hearts">
+          <label class="small muted">Condition</label>
+          <select id="s_condition" class="input"><option>New</option><option>Like New</option><option>Used</option></select>
+          <label class="small muted">Accept LIVE BIDs?</label>
+          <select id="s_allow" class="input"><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div>
+          <label class="small muted">Size</label>
+          <input id="s_size" class="input" placeholder="32">
+          <label class="small muted">Ask Price (USD)</label>
+          <input id="s_price" class="input" placeholder="1100">
+          <label class="small muted">Image URL</label>
+          <input id="s_img" class="input" placeholder="assets/your-photo.jpg">
+        </div>
+      </div>
+      <label class="small muted">Description</label>
+      <textarea id="s_desc" class="input" style="height:100px" placeholder="Describe details, condition, inclusions, and authenticity."></textarea>
+      <div class="mt-2">
+        <button class="btn btn--primary" onclick="seller.create()">Create Listing</button>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section__head"><h2>Your Active Listings</h2></div>
+    <div id="sellerListings" class="grid"></div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="muted small">© <span id="year"></span> CipherExchange</div>
+    <div class="footer__links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="auctions.html">Auctions</a>
+      <a href="sell.html">Sell</a>
+    </div>
+  </div>
+</footer>
+<div id="modal" class="modal hidden">
+  <div class="modal__dialog">
+    <div class="modal__head">
+      <div class="modal__title" id="modalTitle">Modal</div>
+      <button class="modal__close" onclick="ui.closeModal()">✕</button>
+    </div>
+    <div id="modalBody" class="modal__body"></div>
+    <div class="modal__foot" id="modalFoot"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body></html>
