@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CipherExchange — Home</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="theme-color" content="#0b0f14">
+<meta property="og:image" content="assets/og.png"><meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+</head>
+<body data-page="home">
+<header class="nav">
+  <div class="container nav__inner">
+    <div class="brand">
+      <div class="logo">CX</div>
+      <a class="brand__text" href="index.html">CipherExchange</a>
+    </div>
+    <nav class="nav__links">
+      <a href="shop.html">SHOP</a>
+      <a href="sell.html">SELL</a>
+      <a href="index.html#hot">HOT ITEMS</a>
+      <a href="auctions.html">AUCTIONS</a>
+      <button class="btn btn--ghost btn--sm" onclick="wallet.open()">Connect Wallet</button><a class="btn btn--ghost btn--sm" href="#" onclick="auth.open()">Log in / Sign up</a>
+      <a class="btn btn--ghost btn--sm" href="javascript:void(0)">Wallet: <span id="walletBal">$0.00</span></a>
+      <button class="btn btn--primary btn--sm" onclick="ui.openDeposit()">Deposit</button>
+    </nav>
+  </div>
+  <div class="ticker" id="ticker"></div>
+</header>
+<main class="container">
+  <section class="hero hero--solo">
+    <div>
+      <h1>Trade high‑end streetwear with crypto — safely.</h1>
+      <p>Escrow protects both sides. Signed delivery + buyer confirmation before release. Transparent fees.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="shop.html">Start Browsing</a>
+        <button class="btn btn--ghost" onclick="ui.openBuyOptions()">Buy Options</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Escrow</span><small>Release on confirm</small></div>
+        <div class="stat"><span>Fees</span><small>5% buyer / 5% seller</small></div>
+        <div class="stat"><span>Delivery</span><small>Signature required</small></div>
+        <div class="stat"><span>Trust</span><small>Seller score</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hot" class="section">
+    <div class="section__head"><h2>Most Viewed (last hour)</h2><small class="muted">Top 10</small></div>
+    <div id="mostViewed" class="grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head"><h2>Highest Current Bids</h2></div>
+    <div id="highestBids" class="grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head"><h2>Top Sales This Week</h2></div>
+    <div id="topSales" class="grid"></div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <a href="shop.html">Shop</a>
+  <a href="auctions.html">Auctions</a>
+  <a href="sell.html">Sell</a>
+  <a href="profile.html?id=s1">Profile</a>
+</nav>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="muted small">© <span id="year"></span> CipherExchange</div>
+    <div class="footer__links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="auctions.html">Auctions</a>
+      <a href="sell.html">Sell</a>
+    </div>
+  </div>
+</footer>
+<div id="modal" class="modal hidden">
+  <div class="modal__dialog">
+    <div class="modal__head">
+      <div class="modal__title" id="modalTitle">Modal</div>
+      <button class="modal__close" onclick="ui.closeModal()">✕</button>
+    </div>
+    <div id="modalBody" class="modal__body"></div>
+    <div class="modal__foot" id="modalFoot"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body></html>
