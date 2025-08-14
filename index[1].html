@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CipherExchange — Buy & Sell High‑End Streetwear with Crypto</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="description" content="Crypto escrow marketplace for high-end streetwear. Buy and sell safely with signed delivery and buyer confirmation.">
+  <meta property="og:title" content="CipherExchange — Crypto Escrow for Streetwear">
+  <meta property="og:description" content="Deposit crypto, buy safely, and release funds after delivery confirmation.">
+  <meta property="og:image" content="assets/og.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <div class="brand">
+        <div class="logo">CX</div>
+        <div class="brand__text">CipherExchange</div>
+      </div>
+      <nav class="nav__links">
+        <a href="#browse">Browse</a>
+        <a href="#activity">Activity</a>
+        <a href="#waitlist" class="btn btn--ghost btn--sm" onclick="ui.openWaitlist()">Join Waitlist</a>
+        <a href="mailto:hello@cipherexchange.app" class="btn btn--ghost btn--sm">Contact</a>
+        <a class="btn btn--ghost btn--sm">Wallet: <span id="walletBal">$0.00</span></a>
+        <button class="btn btn--primary btn--sm" onclick="ui.openDeposit()">Deposit</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Trade high‑end streetwear with crypto — safely.</h1>
+        <p>Escrow protects both sides. Signed delivery + buyer confirmation before release. Transparent fees.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#browse">Start Browsing</a>
+          <a class="btn btn--ghost" href="CipherExchange_Pitch.pdf">Pitch PDF</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>Escrow</span><small>Release on confirm</small></div>
+          <div class="stat"><span>Fees</span><small>5% buyer / 5% seller</small></div>
+          <div class="stat"><span>Delivery</span><small>Signature required</small></div>
+          <div class="stat"><span>Trust</span><small>Seller score</small></div>
+        </div>
+      </div>
+      <div class="hero__panel card">
+        <div class="card__title">Quick Buy — Escrow Preview</div>
+        <div id="feePreview"></div>
+        <button class="btn btn--primary btn--block" onclick="ui.quickBuy()">Hold Funds & Place Order</button>
+      </div>
+    </section>
+
+    <section id="browse" class="market">
+      <div class="market__head">
+        <div class="tabs">
+          <button id="tabGrid" class="tab tab--active" onclick="ui.setView('grid')">Grid</button>
+          <button id="tabList" class="tab" onclick="ui.setView('list')">List</button>
+        </div>
+        <div class="filters">
+          <input id="q" class="input" placeholder="Search items or brands">
+          <select id="brand" class="input"></select>
+          <select id="cond" class="input">
+            <option value="">Any condition</option>
+            <option>New</option>
+            <option>Like New</option>
+            <option>Used</option>
+          </select>
+        </div>
+      </div>
+      <div id="grid" class="grid"></div>
+      <div id="list" class="list hidden"></div>
+    </section>
+
+    <section id="activity" class="activity">
+      <div class="activity__grid">
+        <div class="card">
+          <div class="card__title">Live Log</div>
+          <div id="log" class="log"></div>
+        </div>
+        <div class="side card">
+          <div class="card__title">Balances</div>
+          <div class="balances">
+            <div><small>Wallet</small><strong id="balWallet">$0.00</strong></div>
+            <div><small>Seller</small><strong id="balSeller">$0.00</strong></div>
+            <div><small>Platform</small><strong id="balPlatform">$0.00</strong></div>
+          </div>
+          <div class="divider"></div>
+          <div class="card__title">Market Style Panels</div>
+          <div class="panels">
+            <div class="panel">
+              <div class="panel__head">Top Bids</div>
+              <div id="bids" class="panel__body"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">Lowest Asks</div>
+              <div id="asks" class="panel__body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="muted small">© <span id="year"></span> CipherExchange — All rights reserved.</div>
+      <div class="footer__links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#" onclick="ui.openWaitlist()">Join Waitlist</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <div class="modal__title" id="modalTitle">Modal</div>
+        <button class="modal__close" onclick="ui.closeModal()">✕</button>
+      </div>
+      <div id="modalBody" class="modal__body"></div>
+      <div class="modal__foot" id="modalFoot"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
