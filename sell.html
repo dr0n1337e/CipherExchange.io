@@ -27,36 +27,58 @@
   <div class="ticker" id="ticker"></div>
 </header>
 <main class="container">
-  <section class="section">
+  <section class="section sell-scope">
     <div class="section__head"><h2>Seller Portal</h2><small class="muted">List a new item (requires login)</small></div>
     <div class="card">
-      <div class="grid grid--2">
-        <div>
-          <label class="small muted">Title</label>
-          <input id="s_title" class="input" placeholder="Chrome Hearts Blue Patch Denim">
-          <label class="small muted">Brand</label>
-          <input id="s_brand" class="input" placeholder="Chrome Hearts">
-          <label class="small muted">Condition</label>
-          <select id="s_condition" class="input"><option>New</option><option>Like New</option><option>Used</option></select>
+      <div class="form-vert">
+        <label class="small muted">Title</label>
+        <input id="s_title" class="input" placeholder="Chrome Hearts Blue Patch Denim">
+
+        <label class="small muted">Brand</label>
+        <input id="s_brand" class="input" placeholder="Chrome Hearts">
+
+        <label class="small muted">Condition</label>
+        <select id="s_condition" class="input"><option>New</option><option>Like New</option><option>Used</option></select>
+
+        <label class="small muted">Size</label>
+        <input id="s_size" class="input" placeholder="32">
+
+        <label class="small muted">Listing Type</label>
+        <select id="s_type" class="input">
+          <option value="fixed">Fixed Price</option>
+          <option value="auction">Timed Auction</option>
+        </select>
+
+        <div id="fixedFields">
+          <label class="small muted">Ask Price (USD)</label>
+          <input id="s_price" class="input" placeholder="1100">
           <label class="small muted">Accept LIVE BIDs?</label>
           <select id="s_allow" class="input"><option value="true">Yes</option><option value="false">No</option></select>
         </div>
-        <div>
-          <label class="small muted">Size</label>
-          <input id="s_size" class="input" placeholder="32">
-          <label class="small muted">Ask Price (USD)</label>
-          <input id="s_price" class="input" placeholder="1100">
-          <label class="small muted">Image URL (optional)</label>
-          <input id="s_img" class="input" placeholder="assets/your-photo.jpg">
+
+        <div id="auctionFields" class="hidden">
+          <label class="small muted">Start Price (USD)</label>
+          <input id="s_start" class="input" placeholder="500">
+          <label class="small muted">Duration</label>
+          <select id="s_duration" class="input"></select>
+          <label class="small muted">Allow Buy Now?</label>
+          <select id="s_buyNow" class="input"><option value="false">No — auction only</option><option value="true">Yes — include Buy Now</option></select>
+          <div id="auctionBuyNow" class="hidden">
+            <label class="small muted">Buy Now Price (USD)</label>
+            <input id="s_price_auction" class="input" placeholder="1100">
+          </div>
         </div>
-      </div>
-      <label class="small muted">Upload photos</label>
-      <input id="s_files" type="file" class="input" accept="image/*" multiple>
-      <div id="s_preview" class="thumbs"></div>
-      <label class="small muted">Description</label>
-      <textarea id="s_desc" class="input" style="height:110px" placeholder="Describe details, condition, inclusions, and authenticity."></textarea>
-      <div class="mt-2">
-        <button class="btn btn--primary" onclick="seller.create()">Create Listing</button>
+
+        <label class="small muted">Upload photos</label>
+        <input id="s_files" type="file" class="input" accept="image/*" multiple>
+        <div id="s_preview" class="thumbs"></div>
+
+        <label class="small muted">Description</label>
+        <textarea id="s_desc" class="input" style="height:130px" placeholder="Describe details, condition, inclusions, and authenticity."></textarea>
+
+        <div class="mt-2">
+          <button class="btn btn--primary" onclick="seller.create()">Create Listing</button>
+        </div>
       </div>
     </div>
   </section>
