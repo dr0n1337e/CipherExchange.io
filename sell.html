@@ -46,12 +46,15 @@
           <input id="s_size" class="input" placeholder="32">
           <label class="small muted">Ask Price (USD)</label>
           <input id="s_price" class="input" placeholder="1100">
-          <label class="small muted">Image URL</label>
+          <label class="small muted">Image URL (optional)</label>
           <input id="s_img" class="input" placeholder="assets/your-photo.jpg">
         </div>
       </div>
+      <label class="small muted">Upload photos</label>
+      <input id="s_files" type="file" class="input" accept="image/*" multiple>
+      <div id="s_preview" class="thumbs"></div>
       <label class="small muted">Description</label>
-      <textarea id="s_desc" class="input" style="height:100px" placeholder="Describe details, condition, inclusions, and authenticity."></textarea>
+      <textarea id="s_desc" class="input" style="height:110px" placeholder="Describe details, condition, inclusions, and authenticity."></textarea>
       <div class="mt-2">
         <button class="btn btn--primary" onclick="seller.create()">Create Listing</button>
       </div>
