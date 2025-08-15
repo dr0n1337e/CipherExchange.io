@@ -343,3 +343,61 @@ document.addEventListener("DOMContentLoaded", () => {
   if(page==="profile"){ render.profile(); }
   if(page==="sell"){ render.sellerListings(); seller.bindFileInput(); }
 });
+
+
+// ---- Service Worker registration ----
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+  });
+}
+
+// ---- Wallet modal (placeholders) ----
+const wallet = {
+  open(){
+    modal.open("Connect Wallet", `
+      <div class='fee'>
+        <div><strong>Phantom</strong><div class='small muted'>Solana & EVM — opens Phantom app</div></div>
+        <button class='btn btn--primary' onclick='wallet.connectPhantom()'>Open Phantom</button>
+        <hr/>
+        <div><strong>Trust Wallet</strong><div class='small muted'>EVM via WalletConnect — placeholder</div></div>
+        <button class='btn' onclick='wallet.connectTrust()'>Open Trust Wallet</button>
+        <hr/>
+        <div><strong>Demo Wallet</strong><div class='small muted'>Simulate a connected wallet for this demo</div></div>
+        <button class='btn' onclick='wallet.simulate()'>Simulate connect</button>
+      </div>
+    `);
+  },
+  connectPhantom(){
+    // Placeholder: open Phantom website/app; real app would integrate Phantom SDK / Wallet Standard
+    window.open('https://phantom.app/', '_blank');
+  },
+  connectTrust(){
+    // Placeholder: open Trust Wallet; real app would integrate WalletConnect v2
+    window.open('https://trustwallet.com/', '_blank');
+  },
+  simulate(){
+    state.user = state.user || { id:"demo", name:"demo", role:"buyer" };
+    state.user.wallet = { address: "0xDEMO...", chain: "EVM", connected: true };
+    persist();
+    modal.open("Wallet Connected", "<p class='small'>Demo wallet connected.</p>");
+  }
+};
+window.wallet = wallet;
+
+
+// --- v5.1: Mobile drawer menu handlers ---
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  const drawerClose = document.getElementById('drawerClose');
+  if (menuBtn && drawer) {
+    menuBtn.addEventListener('click', () => drawer.classList.add('drawer--open'));
+  }
+  if (drawerClose && drawer) {
+    drawerClose.addEventListener('click', () => drawer.classList.remove('drawer--open'));
+  }
+  if (drawer) {
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) drawer.classList.remove('drawer--open'); });
+  }
+});
