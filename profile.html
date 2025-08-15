@@ -5,12 +5,18 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="theme-color" content="#0b0f14">
 <meta property="og:image" content="assets/og.png"><meta property="og:type" content="website">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
 </head>
 <body data-page="profile">
 <header class="nav">
   <div class="container nav__inner">
     <div class="brand">
+      <button class="hamburger" id="menuBtn" aria-label="Open menu">☰</button>
       <div class="logo">CX</div>
       <a class="brand__text" href="index.html">CipherExchange</a>
     </div>
@@ -19,13 +25,31 @@
       <a href="sell.html">SELL</a>
       <a href="index.html#hot">HOT ITEMS</a>
       <a href="auctions.html">AUCTIONS</a>
-      <a class="btn btn--ghost btn--sm" href="#" onclick="auth.open()">Log in / Sign up</a>
-      <a class="btn btn--ghost btn--sm" href="javascript:void(0)">Wallet: <span id="walletBal">$0.00</span></a>
-      <button class="btn btn--primary btn--sm" onclick="ui.openDeposit()">Deposit</button>
+      <button class="btn btn--ghost btn--sm" onclick="wallet.open()">Connect</button>
+      <a class="btn btn--ghost btn--sm" href="#" onclick="auth.open()">Login</a>
     </nav>
+    <div class="nav__mobile">
+      <button class="icon-btn" title="Wallet" onclick="wallet.open()">⎔</button>
+      <button class="icon-btn" title="Login" onclick="auth.open()">👤</button>
+    </div>
   </div>
   <div class="ticker" id="ticker"></div>
 </header>
+<div class="drawer" id="drawer">
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <div class="logo small">CX</div>
+      <button class="drawer__close" id="drawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <a href="shop.html" class="drawer__link">Shop</a>
+    <a href="auctions.html" class="drawer__link">Auctions</a>
+    <a href="sell.html" class="drawer__link">Sell</a>
+    <a href="profile.html?id=s1" class="drawer__link">Profile</a>
+    <hr class="drawer__divider"/>
+    <button class="btn btn--primary btn--block" onclick="wallet.open()">Connect Wallet</button>
+    <button class="btn btn--ghost btn--block" onclick="auth.open()">Log in / Sign up</button>
+  </div>
+</div>
 <main class="container">
   <section class="section">
     <div id="sellerHeader" class="card"></div>
@@ -43,6 +67,34 @@
     <div id="sellerReviews" class="list"></div>
   </section>
 </main>
+
+<nav class="tabbar">
+  <a href="shop.html" class="tablink" aria-label="Shop">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 3h18v2H3zm3 4h12l2 11H4z"/></svg>
+    <span>Shop</span>
+  </a>
+  <a href="auctions.html" class="tablink" aria-label="Auctions">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M5 3h4v4H5zM9 3l6 6-2 2-6-6zM3 13h12v2H3zM3 17h12v2H3z"/></svg>
+    <span>Auctions</span>
+  </a>
+  <a href="sell.html" class="tablink" aria-label="Sell">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 13l9-9 9 9-9 9z"/></svg>
+    <span>Sell</span>
+  </a>
+  <a href="profile.html?id=s1" class="tablink" aria-label="Profile">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 3-9 6v2h18v-2c0-3-4-6-9-6z"/></svg>
+    <span>Profile</span>
+  </a>
+</nav>
+
+
+<nav class="tabbar">
+  <a href="shop.html">Shop</a>
+  <a href="auctions.html">Auctions</a>
+  <a href="sell.html">Sell</a>
+  <a href="profile.html?id=s1">Profile</a>
+</nav>
+
 <footer class="footer">
   <div class="container footer__inner">
     <div class="muted small">© <span id="year"></span> CipherExchange</div>
@@ -64,5 +116,5 @@
     <div class="modal__foot" id="modalFoot"></div>
   </div>
 </div>
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 </body></html>
