@@ -64,3 +64,49 @@ body[data-page="sell"] *{font-weight:700}
 .countdown{font-size:.82rem;color:#b3c7c5}
 @media (max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.activity__grid{grid-template-columns:1fr}.grid--2{grid-template-columns:1fr}}
 @media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+
+/* --- Mobile-first tweaks & tab bar --- */
+.tabbar{
+  position:sticky; bottom:0; left:0; right:0;
+  display:flex; justify-content:space-around; gap:8px;
+  padding:10px 8px; background:#0a0f13; border-top:1px solid var(--border); z-index:12;
+}
+.tabbar a{ color:var(--muted); font-weight:800; text-transform:uppercase; font-size:.86rem }
+body{ padding-bottom:72px } /* room for tabbar */
+
+@media (max-width:768px){
+  .hero{padding:28px 0}
+  .grid{grid-template-columns:1fr}
+  .filters{gap:8px}
+  .tile img{height:200px}
+  .nav__links a,.nav__links .btn{font-size:.9rem}
+  .btn{padding:12px 14px}
+  .input{min-height:44px}
+}
+
+
+/* --- v5.1 Compact Mobile Header & Icons --- */
+.nav__mobile{ display:none; gap:8px; }
+.icon-btn{ border:1px solid var(--border); background:var(--chip); color:var(--text); width:36px; height:36px; border-radius:10px; display:grid; place-items:center; font-weight:900 }
+.hamburger{ border:1px solid var(--border); background:var(--chip); color:var(--text); width:36px; height:36px; border-radius:10px; margin-right:8px; display:none }
+.logo.small{ width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#041a0d; display:grid; place-items:center; font-weight:900; font-size:.8rem }
+.drawer{ position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; z-index:20 }
+.drawer--open{ display:block }
+.drawer__panel{ position:absolute; top:0; left:0; bottom:0; width:78%; max-width:360px; background:var(--bg-panel); border-right:1px solid var(--border); padding:16px }
+.drawer__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px }
+.drawer__close{ background:transparent; border:0; color:var(--text); font-size:1.2rem }
+.drawer__link{ display:block; padding:12px 4px; color:var(--text); font-weight:800 }
+.drawer__divider{ border:0; border-top:1px solid var(--border); margin:12px 0 }
+.tabbar{ position:sticky; bottom:0; left:0; right:0; display:flex; justify-content:space-around; gap:8px; padding:8px 8px; background:#0a0f13; border-top:1px solid var(--border); z-index:12 }
+.tabbar .tablink{ display:flex; flex-direction:column; align-items:center; gap:4px; color:var(--muted); font-weight:800; font-size:.8rem }
+.tabbar svg{ display:block }
+@media (max-width:860px){
+  .nav__links{ display:none }
+  .nav__mobile{ display:flex }
+  .hamburger{ display:block }
+  .brand__text{ font-size:1rem }
+  .nav__inner{ padding:10px 0 }
+  .tile img{ height:180px }
+  body{ padding-bottom:68px }
+}
