@@ -1,11 +1,37 @@
 
+const CACHE = 'silkx-v1';
+const PRECACHE = [
+  './',
+  './index.html','./shop.html','./auctions.html','./sell.html','./item.html','./profile.html',
+  './styles.css?v=7','./app.js?v=7','./manifest.webmanifest',
+];
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open('cx-v1').then(cache => cache.addAll([
-    './',
-    './index.html','./shop.html','./auctions.html','./sell.html','./item.html','./profile.html',
-    './styles.css','./app.js','./manifest.webmanifest',
-  ])));
+  e.waitUntil((async ()=>{
+    const cache = await caches.open(CACHE);
+    await cache.addAll(PRECACHE);
+    self.skipWaiting();
+  })());
+});
+self.addEventListener('activate', e => {
+  e.waitUntil((async ()=>{
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 self.addEventListener('fetch', e => {
-  e.respondWith(caches.match(e.request).then(resp => resp || fetch(e.request)));
+  const req = e.request;
+  const isDocOrAsset = req.destination==='document'||req.destination==='script'||req.destination==='style';
+  if(isDocOrAsset){
+    e.respondWith((async ()=>{
+      try{
+        const fresh = await fetch(req, {cache:'no-store'});
+        const cache = await caches.open(CACHE); cache.put(req, fresh.clone());
+        return fresh;
+      }catch{
+        const cached = await caches.match(req);
+        return cached || fetch(req);
+      }
+    })());
+  }
 });
