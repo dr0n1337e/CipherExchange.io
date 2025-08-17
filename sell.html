@@ -2,14 +2,10 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SilkExchange — Vendor</title>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css?v=8">
 <meta name="theme-color" content="#666A6D">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
-<meta property="og:image" content="assets/og.png"><meta property="og:type" content="website">
-<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="sell">
 <header class="nav">
@@ -55,10 +51,12 @@
     </div>
     <a href="auctions.html" class="drawer__link">Auctions</a>
     <a href="sell.html" class="drawer__link">Vendor</a>
-    <a href="profile.html?id=s1" class="drawer__link">Profile</a>
+    <a href="profile.html" class="drawer__link">Profile</a>
+    <a href="leaderboard.html" class="drawer__link">Leaderboard</a>
+    <a href="admin.html" class="drawer__link">Admin (demo)</a>
     <hr class="drawer__divider"/>
     <button class="btn btn--primary btn--block" onclick="wallet.open()">Connect Wallet</button>
-    <button class="btn btn--ghost btn--block" onclick="auth.open()">Log in / Sign up</button>
+    <button class="btn btn--ghost btn--block" onclick="auth.open()">Sign up / Log in</button>
   </div>
 </div>
 <main class="container">
@@ -144,7 +142,7 @@
     <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 13l9-9 9 9-9 9z"/></svg>
     <span>Vendor</span>
   </a>
-  <a href="profile.html?id=s1" class="tablink" aria-label="Profile">
+  <a href="profile.html" class="tablink" aria-label="Profile">
     <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 3-9 6v2h18v-2c0-3-4-6-9-6z"/></svg>
     <span>Profile</span>
   </a>
@@ -171,5 +169,5 @@
     <div class="modal__foot" id="modalFoot"></div>
   </div>
 </div>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 </body></html>

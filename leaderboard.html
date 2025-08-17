@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SilkExchange — Home</title>
+<title>SilkExchange — Leaderboard</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="styles.css?v=8">
 <meta name="theme-color" content="#666A6D">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 </head>
-<body data-page="home">
+<body data-page="leaderboard">
 <header class="nav">
   <div class="container nav__inner">
     <div class="brand">
@@ -60,25 +60,17 @@
   </div>
 </div>
 <main class="container">
-  <section class="hero hero--solo">
-    <div>
-      <h1 style="margin-bottom:6px">SilkExchange</h1>
-      <div class="muted small" style="margin:-8px 0 14px 0">LIVE BIDDING</div>
-      <h2 style="margin:8px 0 14px 0">Anonymous Market Place</h2>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="shop.html">Start Browsing</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="hot" class="section">
-    <div class="section__head"><h2>Most Viewed (last hour)</h2><small class="muted">Top 10</small></div>
-    <div id="mostViewed" class="grid"></div>
-  </section>
-
   <section class="section">
-    <div class="section__head"><h2>Highest Current Bids</h2></div>
-    <div id="highestBids" class="grid"></div>
+    <div class="section__head"><h2>Leaderboard</h2><small class="muted">Top spenders by SILK ID</small></div>
+    <div class="filters">
+      <select id="lbRange" class="input">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="all">All time</option>
+      </select>
+    </div>
+    <div id="lbList" class="list"></div>
   </section>
 </main>
 

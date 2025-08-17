@@ -1,9 +1,9 @@
 
-const CACHE = 'silkx-v1';
+const CACHE = 'silkx-v2';
 const PRECACHE = [
   './',
-  './index.html','./shop.html','./auctions.html','./sell.html','./item.html','./profile.html',
-  './styles.css?v=7','./app.js?v=7','./manifest.webmanifest',
+  './index.html','./shop.html','./auctions.html','./sell.html','./item.html','./profile.html','./leaderboard.html','./admin.html',
+  './styles.css?v=8','./app.js?v=8','./manifest.webmanifest',
 ];
 self.addEventListener('install', e => {
   e.waitUntil((async ()=>{
